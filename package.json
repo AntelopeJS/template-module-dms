@@ -1,0 +1,66 @@
+{
+  "name": "antelopejs-dms-module",
+  "version": "0.0.1",
+  "description": "A reusable AntelopeJS DMS module with a Vue frontend and a local playground",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntelopeJS/template-module-dms.git"
+  },
+  "files": [
+    "dist",
+    "!dist/.tsbuildinfo",
+    "frontend-vue/dms.frontend.ts",
+    "frontend-vue/app",
+    "frontend-vue/package.json",
+    "frontend-vue/pnpm-lock.yaml",
+    "frontend-vue/.npmrc"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "setup": "pnpm --dir frontend-vue install && node scripts/setup.mjs",
+    "services:up": "docker compose up -d",
+    "services:down": "docker compose down",
+    "dev": "ajs project dev -p playground -w",
+    "frontend:dev": "cd playground && ajs dms dev",
+    "frontend:build": "cd playground && ajs dms build",
+    "frontend:verify": "ajs dms verify-source",
+    "build": "rimraf dist && tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint && oxfmt --check . && pnpm --dir frontend-vue lint",
+    "format": "oxfmt . && pnpm --dir frontend-vue format",
+    "test": "node --test test/*.test.mjs && pnpm --dir frontend-vue test",
+    "prepack": "pnpm build"
+  },
+  "dependencies": {
+    "@antelopejs/interface-api": ">=0.0.14 <1.0.0",
+    "@antelopejs/interface-core": ">=0.2.3 <0.3.0",
+    "@antelopejs/interface-dms": ">=0.7.1 <0.8.0"
+  },
+  "devDependencies": {
+    "@antelopejs/core": "1.15.2",
+    "@antelopejs/dms": ">=0.9.2 <0.10.0",
+    "@antelopejs/dms-frontend": "0.6.1",
+    "@antelopejs/tooling-configs": ">=0.0.7 <1.0.0",
+    "@types/node": "^24.0.0",
+    "dotenv": "^17.4.2",
+    "oxfmt": "^0.66.0",
+    "oxlint": "1.81.0",
+    "oxlint-tsgolint": "^7.0.2001",
+    "rimraf": "^6.0.1",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@10.2.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
+  },
+  "antelopeJs": {
+    "baseUrl": "dist"
+  }
+}

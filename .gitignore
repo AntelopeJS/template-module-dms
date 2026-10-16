@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.antelope/
+.env
+.env.*
+!.env.example
+*.log
+*.tgz
+*.tsbuildinfo
+.DS_Store
+.amp/
+.claude/skills/
+.agents/skills/
