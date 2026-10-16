@@ -25,7 +25,6 @@ jobs:
           node-version-file: .nvmrc
       - run: npm i -g --force corepack@0.34.0 && corepack enable
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --dir frontend-vue install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm build

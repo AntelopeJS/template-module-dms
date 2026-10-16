@@ -21,9 +21,7 @@ my-dms-module/
 │   └── tests/welcome.test.ts
 ├── playground/
 │   ├── antelope.config.ts        # local module + DMS and its providers
-│   └── .env.example              # setup creates an ignored .env with random secrets
-├── scripts/setup.mjs
-├── test/setup.test.mjs
+│   └── .env.example              # optional local overrides
 ├── compose.yaml                 # local MongoDB and Mailpit
 └── package.json                 # backend, frontend, build and check commands
 ```
@@ -40,20 +38,20 @@ Clone the template today:
 git clone https://github.com/AntelopeJS/template-module-dms.git my-dms-module
 cd my-dms-module
 pnpm install
-pnpm run setup
 ```
 
-`pnpm run setup` installs the frontend dependencies and generates three independent secrets in `playground/.env`. Running it again preserves that file, including your edits. Never commit it. Include `run`: `pnpm setup` is pnpm's own global installation command.
+`pnpm install` installs both backend and frontend packages through the pnpm workspace. Each package keeps its existing lockfile to preserve its dependency resolution.
+
+No setup script or `.env` is required for development. The playground uses development JWT secrets, and the frontend loader generates an ephemeral session secret. Restarting the frontend can invalidate sessions. Do not deploy the playground with its default secrets; `build` and `start` require an explicit `DMS_SESSION_SECRET` of at least 32 characters.
 
 The **DMS Module Typescript** entry is prepared for the [CLI registry](https://github.com/AntelopeJS/interfaces), but is not available until that registry update is published. Once it appears in the selector, you can use:
 
 ```bash
 ajs module init my-dms-module --template "DMS Module Typescript" --pm pnpm --yes
 cd my-dms-module
-pnpm run setup
 ```
 
-The CLI installs the root dependencies. The frontend remains a separate package, so run `setup` after creation too.
+The CLI installs both workspace packages; continue directly with the commands below.
 
 ## Run it
 
@@ -78,7 +76,6 @@ Mailpit captures emails locally; its inbox listens on port 8025. If you do not u
 
 | Command | What it does |
 | --- | --- |
-| `pnpm run setup` | Installs frontend dependencies and creates local secrets without overwriting them |
 | `pnpm services:up` | Starts MongoDB and Mailpit with Docker Compose |
 | `pnpm services:down` | Stops the containers without deleting the database volume |
 | `pnpm dev` | Builds the local module and runs the backend in watch mode |
@@ -88,7 +85,7 @@ Mailpit captures emails locally; its inbox listens on port 8025. If you do not u
 | `pnpm build` | Compiles the reusable backend module to `dist/` |
 | `pnpm typecheck` | Checks backend TypeScript types |
 | `pnpm lint` | Checks backend and frontend formatting and lint rules |
-| `pnpm test` | Tests environment setup and Vue rendering |
+| `pnpm test` | Tests Vue rendering |
 | `pnpm format` | Formats backend and frontend sources |
 | `pnpm pack` | Builds a tarball containing the module and its frontend sources |
 
@@ -116,7 +113,7 @@ modules: {
 }
 ```
 
-Install both packages with `pnpm install` and `pnpm run setup` when working from a checkout. After publishing your renamed module, use a `package` source instead of `local`. The package includes `dist/` and the Vue frontend sources; it excludes the playground, credentials and local data. `frontend:build` builds a whole dashboard for the playground; it is not required to publish the reusable module.
+Install both packages with `pnpm install` when working from a checkout. After publishing your renamed module, use a `package` source instead of `local`. The package includes `dist/` and the Vue frontend sources; it excludes the playground, credentials and local data. `frontend:build` builds a whole dashboard for the playground; it is not required to publish the reusable module.
 
 ## Next steps
 

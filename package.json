@@ -19,7 +19,6 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "setup": "pnpm --dir frontend-vue install && node scripts/setup.mjs",
     "services:up": "docker compose up -d",
     "services:down": "docker compose down",
     "dev": "ajs project dev -p playground -w",
@@ -30,7 +29,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "oxlint && oxfmt --check . && pnpm --dir frontend-vue lint",
     "format": "oxfmt . && pnpm --dir frontend-vue format",
-    "test": "node --test test/*.test.mjs && pnpm --dir frontend-vue test",
+    "test": "pnpm --dir frontend-vue test",
     "prepack": "pnpm build"
   },
   "dependencies": {

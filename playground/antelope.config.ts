@@ -33,7 +33,8 @@ export default defineConfig({
           description: "Develop a reusable AntelopeJS DMS module",
         },
         auth: {
-          jwtSecret: process.env.DMS_JWT_SECRET,
+          // Development playground only; use explicit secrets for deployments.
+          jwtSecret: process.env.DMS_JWT_SECRET ?? "dev",
           signInCountry: { database: false },
         },
       },
@@ -55,7 +56,7 @@ export default defineConfig({
         package: "@antelopejs/auth-jwt",
         version: "^1.0.3",
       },
-      config: { secret: process.env.AUTH_JWT_SECRET },
+      config: { secret: process.env.AUTH_JWT_SECRET ?? "dev" },
     },
     api: {
       source: {
