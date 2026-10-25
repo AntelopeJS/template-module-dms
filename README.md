@@ -23,6 +23,9 @@ my-dms-module/
 │   ├── antelope.config.ts        # local module + DMS and its providers
 │   └── .env.example              # optional local overrides
 ├── compose.yaml                 # local MongoDB and Mailpit
+├── oxlint.config.ts             # lint, oxfmt.config.ts formatting, knip.config.ts dead code
+├── lefthook.yml                 # pre-commit and pre-push hooks
+├── guardrails.ratchet.json      # accepted lint debt, which only goes down
 └── package.json                 # backend, frontend, build and check commands
 ```
 
@@ -84,8 +87,10 @@ Mailpit captures emails locally; its inbox listens on port 8025. If you do not u
 | `pnpm frontend:verify` | Builds and type-checks the frontend against the installed DMS, without starting a backend |
 | `pnpm build` | Compiles the reusable backend module to `dist/` |
 | `pnpm typecheck` | Checks backend TypeScript types |
-| `pnpm lint` | Checks backend and frontend formatting and lint rules |
+| `pnpm lint` | Lints the backend with oxlint and the frontend with ESLint and Prettier |
+| `pnpm format:check` | Checks backend formatting |
 | `pnpm test` | Tests Vue rendering |
+| `pnpm run checks` | Runs typecheck, lint, format, knip, the tests, size, ratchet and sync checks |
 | `pnpm format` | Formats backend and frontend sources |
 | `pnpm pack` | Builds a tarball containing the module and its frontend sources |
 
@@ -125,7 +130,7 @@ Using an AI coding agent? Install the [AntelopeJS agent skills plugin](https://g
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md). Run `pnpm lint`, `pnpm typecheck`, `pnpm build`, `pnpm test` and `pnpm frontend:verify` before opening a pull request.
+See [CONTRIBUTING.md](./CONTRIBUTING.md). Run `pnpm run checks`, `pnpm build` and `pnpm frontend:verify` before opening a pull request.
 
 ## License
 

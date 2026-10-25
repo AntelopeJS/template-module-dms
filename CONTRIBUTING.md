@@ -7,7 +7,7 @@ Search existing issues before opening a new one, and discuss substantial behavio
 1. Create a focused branch from `main`.
 2. Follow the setup instructions in [README.md](./README.md), keeping both pnpm lockfiles intact.
 3. Make the smallest change that solves the problem.
-4. Run `pnpm lint`, `pnpm typecheck`, `pnpm build`, `pnpm test` and `pnpm frontend:verify`.
+4. Run `pnpm run checks`, `pnpm build` and `pnpm frontend:verify`.
 5. For runtime changes, run the playground with `pnpm dev` and `pnpm frontend:dev` and check the affected page in the browser.
 
 Keep backend code in `src/`, frontend code in `frontend-vue/` and development infrastructure in `playground/`. Never commit `.env` files, generated runtimes, credentials or local data.

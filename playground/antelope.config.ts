@@ -33,7 +33,6 @@ export default defineConfig({
           description: "Develop a reusable AntelopeJS DMS module",
         },
         auth: {
-          // Development playground only; use explicit secrets for deployments.
           jwtSecret: process.env.DMS_JWT_SECRET ?? "dev",
           signInCountry: { database: false },
         },
