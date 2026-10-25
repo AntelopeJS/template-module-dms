@@ -16,7 +16,7 @@ Finish every change with `pnpm run checks`: typecheck, lint (oxlint and the fron
 
 `pnpm run checks` does not cover these; CI runs the first two after it:
 
-- `pnpm build`, which emits the published declarations.
+- `pnpm build`, which compiles the published module to `dist/`.
 - `pnpm frontend:verify`, which builds and type-checks the frontend against the installed DMS without a backend.
 - The running module: start `pnpm services:up`, `pnpm dev` and `pnpm frontend:dev`, then check the affected page in the browser.
 
