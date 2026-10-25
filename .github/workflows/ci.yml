@@ -13,20 +13,12 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  ubuntu:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    env:
-      COREPACK_DEFAULT_TO_LATEST: 0
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
-      - run: npm i -g --force corepack@0.34.0 && corepack enable
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
-      - run: pnpm typecheck
-      - run: pnpm build
-      - run: pnpm test
-      - run: pnpm frontend:verify
+  checks:
+    uses: AntelopeJS/.github/.github/workflows/ci-node.yml@v1
+    with:
+      # `pnpm run checks` typechecks without emitting; the build also checks
+      # the declaration output that gets published. `frontend:verify` builds
+      # and checks the DMS frontend bundle.
+      extra-commands: |
+        pnpm build
+        pnpm frontend:verify
