@@ -16,9 +16,7 @@ jobs:
   checks:
     uses: AntelopeJS/.github/.github/workflows/ci-node.yml@v1
     with:
-      # `pnpm run checks` typechecks without emitting; the build also checks
-      # the declaration output that gets published. `frontend:verify` builds
-      # and checks the DMS frontend bundle.
+      # `pnpm run checks` does not emit `dist/` or bundle the DMS frontend.
       extra-commands: |
         pnpm build
         pnpm frontend:verify

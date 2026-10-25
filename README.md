@@ -23,6 +23,9 @@ my-dms-module/
 │   ├── antelope.config.ts        # local module + DMS and its providers
 │   └── .env.example              # optional local overrides
 ├── compose.yaml                 # local MongoDB and Mailpit
+├── oxlint.config.ts             # lint, oxfmt.config.ts formatting, knip.config.ts dead code
+├── lefthook.yml                 # pre-commit and pre-push hooks
+├── guardrails.ratchet.json      # accepted lint debt, which only goes down
 └── package.json                 # backend, frontend, build and check commands
 ```
 

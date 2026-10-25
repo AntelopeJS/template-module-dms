@@ -5,14 +5,14 @@ A reusable AntelopeJS DMS module built from the `template-module-dms` template. 
 ## Layout
 
 - `src/` is the backend module: `index.ts` holds the lifecycle, `pages/` the DMS pages. Register modules before importing their pages in `construct()`, and register the frontend in `start()` after DMS connects.
-- `frontend-vue/` is the Vue frontend, a pnpm workspace package with its own lockfile (`shared-workspace-lockfile=false`). ESLint, Prettier and Vitest own it, not oxlint and oxfmt. Keep `CustomComponent` names aligned with its `componentPrefix` and registration names, and its `engines` range on `@antelopejs/dms-frontend` matching the root devDependency.
+- `frontend-vue/` is the Vue frontend, a pnpm workspace package with its own lockfile (`shared-workspace-lockfile=false`). ESLint, Prettier and Vitest own it, not oxlint and oxfmt. Keep `CustomComponent` names aligned with its `componentPrefix` and registration names, and its `engines` range on `@antelopejs/dms-frontend` including the root devDependency's version and capped below the next minor: the loader refuses the module outside it.
 - `playground/` is the development host, not part of the published package. Keep DMS providers and development credentials there. The frontend scripts run from `playground/` so the loader finds the backend's `.antelope` discovery files.
 
 Module pages require platform-owner access.
 
 ## Checks
 
-Finish every change with `pnpm run checks`: typecheck, lint (oxlint and the frontend's ESLint and Prettier), format, knip, `pnpm test` (the frontend's Vitest suite), size, ratchet and sync, printing only what failed. `guardrails.ratchet.json` records the lint findings the template already had; its numbers only go down. After you remove debt, run `pnpm run ratchet:update` and commit the lowered file. The pre-commit hook rejects new findings on the lines you add.
+Finish every change with `pnpm run checks`: typecheck, lint (oxlint and the frontend's ESLint and Prettier), format, knip, `pnpm test` (the frontend's Vitest suite), size, ratchet and sync, printing only what failed. `guardrails.ratchet.json` records accepted lint findings and oversize files; its numbers only go down, and a rule listed there is checked by the ratchet instead of `oxlint`. After you remove debt, run `pnpm run ratchet:update` and commit the lowered file. The pre-commit hook rejects new findings on the lines you add. `prepare` installs the hooks only inside a git work tree: in a new project, run `pnpm install` again after `git init`.
 
 `pnpm run checks` does not cover these; CI runs the first two after it:
 

@@ -1,6 +1,4 @@
 {
-  "rules": {
-    "antelopejs/no-comments": 1
-  },
+  "rules": {},
   "oversizeFiles": {}
 }
