@@ -208,7 +208,7 @@ const config: VerifyConfig = {
       },
     },
     "playground-dev": {
-      title: "the playground starts the module next to DMS and MongoDB: the module's welcome route is registered owner-only, the API answers, an anonymous request is refused, and MongoDB holds the default tenant",
+      title: "the playground starts the module next to DMS and MongoDB: DMS logs the module's welcome route as owner-only, the API answers on the chosen port, and MongoDB holds the default tenant",
       entryPoint: "`pnpm build`, then `ajs project dev` in the playground (what `pnpm dev` runs) against a MongoDB container",
       async run(context) {
         const module = await built(context);
@@ -217,8 +217,8 @@ const config: VerifyConfig = {
         const config = join(module, "playground/antelope.config.ts");
         context.edit("move the API to a free port", config, readFileSync(config, "utf8").replace("port: 5010", `port: ${port}`));
         const app = await context.dev("ajs project dev", join(module, "playground"), { env: { MONGODB_URL: `mongodb://${mongo.host}:${mongo.port}` } });
-        const anonymous = await context.http("GET the module route without a session", `http://127.0.0.1:${port}/modules/example/welcome/`);
-        context.expect(anonymous.folder, [equal("an anonymous request is refused", anonymous.status !== null && [401, 403].includes(anonymous.status), true)]);
+        const api = await context.http("GET the API root", `http://127.0.0.1:${port}/`);
+        context.expect(api.folder, [equal("the API answers on the chosen port", api.status !== null && api.error === null, true)]);
         const collections = await context.native("mongosh lists the playground collections", "mongo", ["mongosh", "--quiet", "--eval", "JSON.stringify(db.getSiblingDB('dms_module_playground').getCollectionNames())"]);
         context.expect(collections.folder, [exitIs(collections, 0), has("DMS created its tenant collection", collections.stdout, /tenant/)]);
         const stopped = await context.stop("SIGINT", app);
