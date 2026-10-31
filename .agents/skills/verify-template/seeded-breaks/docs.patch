@@ -1,0 +1,13 @@
+diff --git a/README.md b/README.md
+index 070cecc..3478cda 100644
+--- a/README.md
++++ b/README.md
+@@ -79,7 +79,7 @@ Mailpit captures emails locally; its inbox listens on port 8025. If you do not u
+ 
+ | Command | What it does |
+ | --- | --- |
+-| `pnpm services:up` | Starts MongoDB and Mailpit with Docker Compose |
++| `pnpm services:start` | Starts MongoDB and Mailpit with Docker Compose |
+ | `pnpm services:down` | Stops the containers without deleting the database volume |
+ | `pnpm dev` | Builds the local module and runs the backend in watch mode |
+ | `pnpm frontend:dev` | Starts the Vue dashboard with hot reload |

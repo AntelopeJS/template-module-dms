@@ -1,0 +1,13 @@
+diff --git a/tsconfig.json b/tsconfig.json
+index c421d04..b348e41 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -7,7 +7,7 @@
+     "types": ["node"],
+     "outDir": "dist",
+     "rootDir": "src",
+-    "strict": true,
++    "strict": false,
+     "esModuleInterop": true,
+     "experimentalDecorators": true,
+     "emitDecoratorMetadata": true,

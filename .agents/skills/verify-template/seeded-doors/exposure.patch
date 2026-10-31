@@ -1,0 +1,13 @@
+diff --git a/.gitignore b/.gitignore
+index 5d244ce..31bfb8b 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,8 +1,6 @@
+ node_modules/
+ dist/
+ .antelope/
+-.env
+-.env.*
+ !.env.example
+ *.log
+ *.tgz
