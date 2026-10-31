@@ -1,0 +1,13 @@
+diff --git a/src/index.ts b/src/index.ts
+index b13a0b1..19ccb96 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -14,7 +14,7 @@ export async function construct(): Promise<void> {
+   await import("./pages/welcome");
+ }
+ 
+-export async function start(): Promise<void> {
++export async function begin(): Promise<void> {
+   await AddFrontendModule({
+     name: "example-frontend-vue",
+     sourcePath: resolve(__dirname, "../frontend-vue"),
