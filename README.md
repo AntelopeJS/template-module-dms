@@ -135,15 +135,3 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md). Run `pnpm run checks`, `pnpm build` an
 ## License
 
 [Apache-2.0](./LICENSE)
-
-## Compatibility
-
-<!-- antelopejs-docs-compat:start -->
-
-| Package                      | Supported         | Tested with |
-| ---------------------------- | ----------------- | ----------- |
-| `@antelopejs/interface-api`  | `>=0.0.14 <1.0.0` | `0.0.14`    |
-| `@antelopejs/interface-core` | `>=0.3.0 <1.0.0`  | `0.3.0`     |
-| `@antelopejs/interface-dms`  | `>=0.7.1 <0.8.0`  | `0.7.1`     |
-
-<!-- antelopejs-docs-compat:end -->

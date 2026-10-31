@@ -21,8 +21,6 @@ jobs:
       extra-commands: |
         pnpm build
         pnpm frontend:verify
-      docs-files: |
-        README.md
       renovate-sync: false
     permissions:
       contents: read
