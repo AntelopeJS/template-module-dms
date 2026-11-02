@@ -14,4 +14,7 @@
 @antelopejs/interface-data-api	package.json	devDependencies	(added)
 @antelopejs/dms	package.json	devDependencies	>=0.9.2 <0.10.0
 @antelopejs/dms	package.json	pnpm.overrides	
-@antelopejs/dms>@antelopejs/interface-core	package.json	pnpm.overrides	
+@antelopejs/interface-core	package.json	dependencies	>=0.3.0 <1.0.0
+@antelopejs/interface-core	package.json	pnpm.overrides	
+@antelopejs/core	package.json	devDependencies	1.18.0
+@antelopejs/core	package.json	pnpm.overrides	
