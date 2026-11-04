@@ -35,26 +35,16 @@ The module consumes `@antelopejs/interface-dms`; it does not invent another inte
 
 Use **Node.js 24**, **pnpm** and **MongoDB**. Docker Compose supplies MongoDB and a local email inbox; you can use existing local services instead.
 
-Clone the template today:
+Create a module from this template:
 
 ```bash
-git clone https://github.com/AntelopeJS/template-module-dms.git my-dms-module
+npx @antelopejs/core module init my-dms-module --template dms-module-typescript --pm pnpm --yes
 cd my-dms-module
-pnpm install
 ```
 
-`pnpm install` installs both backend and frontend packages through the pnpm workspace. Each package keeps its existing lockfile to preserve its dependency resolution.
+The command installs both backend and frontend packages through the pnpm workspace. Each package keeps its existing lockfile to preserve its dependency resolution.
 
 No setup script or `.env` is required for development. The playground uses development JWT secrets, and the frontend loader generates an ephemeral session secret. Restarting the frontend can invalidate sessions. Do not deploy the playground with its default secrets; `build` and `start` require an explicit `DMS_SESSION_SECRET` of at least 32 characters.
-
-The **DMS Module Typescript** entry is prepared for the [CLI registry](https://github.com/AntelopeJS/interfaces), but is not available until that registry update is published. Once it appears in the selector, you can use:
-
-```bash
-ajs module init my-dms-module --template "DMS Module Typescript" --pm pnpm --yes
-cd my-dms-module
-```
-
-The CLI installs both workspace packages; continue directly with the commands below.
 
 ## Run it
 
