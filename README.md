@@ -34,22 +34,14 @@ The module consumes `@antelopejs/interface-dms` and declares no interface of its
 
 Use the Node.js version that `.nvmrc` names (`engines` in `package.json` sets the floor), **pnpm** and **MongoDB**. Docker Compose supplies MongoDB and a local email inbox. You can use existing local services instead.
 
-Create the module with the AntelopeJS CLI, which lists this template as **DMS Module Typescript**:
+Create a module from this template:
 
 ```bash
-ajs module init my-dms-module --template "DMS Module Typescript" --pm pnpm --yes
+npx @antelopejs/core module init my-dms-module --template dms-module-typescript --pm pnpm --yes
 cd my-dms-module
 ```
 
-The CLI installs both workspace packages. To start from a clone instead:
-
-```bash
-git clone https://github.com/AntelopeJS/template-module-dms.git my-dms-module
-cd my-dms-module
-pnpm install
-```
-
-`pnpm install` installs both backend and frontend packages through the pnpm workspace. Each package keeps its own lockfile to preserve its dependency resolution.
+The command installs both backend and frontend packages through the pnpm workspace. Each package keeps its existing lockfile to preserve its dependency resolution.
 
 No setup script or `.env` is required for development. The playground uses development JWT secrets, and the frontend loader generates an ephemeral session secret. Restarting the frontend can invalidate sessions. Do not deploy the playground with its default secrets. `build` and `start` require an explicit `DMS_SESSION_SECRET` of at least 32 characters.
 
