@@ -23,7 +23,7 @@
     "services:down": "docker compose down",
     "dev": "ajs project dev -p playground -w",
     "frontend:dev": "cd playground && ajs dms dev",
-    "frontend:build": "cd playground && ajs dms build",
+    "frontend:build": "pnpm build && cd playground && ajs dms build",
     "frontend:verify": "ajs dms verify-source",
     "build": "rimraf dist && tsc",
     "typecheck": "tsc --noEmit && tsc -p playground",
