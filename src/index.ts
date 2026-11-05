@@ -1,8 +1,8 @@
-import { resolve } from "node:path";
 import {
   AddFrontendModule,
   RegisterModule,
 } from "@antelopejs/interface-dms/page";
+import { frontendModule } from "./frontend-module";
 
 export async function construct(): Promise<void> {
   RegisterModule({
@@ -15,9 +15,5 @@ export async function construct(): Promise<void> {
 }
 
 export async function start(): Promise<void> {
-  await AddFrontendModule({
-    name: "example-frontend-vue",
-    sourcePath: resolve(__dirname, "../frontend-vue"),
-    renderer: { name: "vue", version: "3" },
-  });
+  await AddFrontendModule(frontendModule());
 }

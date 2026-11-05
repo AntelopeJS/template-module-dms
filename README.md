@@ -87,7 +87,7 @@ Mailpit captures emails locally, and its inbox listens on port 8025. If you do n
 
 1. Change the npm package `name`, `description` and `repository` in `package.json`.
 2. Rename the `example` module ID in `src/index.ts` and `src/pages/welcome.ts`, then update the playground's module key and `homepage` URL.
-3. Rename `example-frontend-vue` in `src/index.ts` and `frontend-vue/package.json`. Keep the frontend registration names aligned. `componentPrefix: 'Example'` plus `registerComponent('Welcome', ...)` resolves `CustomComponent("example-welcome")` from the backend.
+3. Rename `example-frontend-vue` in `src/frontend-module.ts` and `frontend-vue/package.json`. Keep the frontend registration names aligned. `componentPrefix: 'Example'` plus `registerComponent('Welcome', ...)` resolves `CustomComponent("example-welcome")` from the backend.
 4. Add pages under `src/pages/` and import them inside `construct()`, after `RegisterModule()`. Registering pages before their module exists fails at startup.
 
 `start()` registers the frontend after DMS connects. Its absolute `sourcePath` works both in this checkout and when the module is installed from a package. Backend watch mode compiles in place rather than removing the running `dist/` directory.

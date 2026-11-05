@@ -22,7 +22,7 @@ export default defineConfig({
       source: {
         type: "package",
         package: "@antelopejs/dms",
-        version: ">=0.9.2 <0.10.0",
+        version: ">=0.16.1 <0.17.0",
       },
       config: {
         apiBaseUrl: "${@api.API_PUBLIC_BASE_URL}",
@@ -72,7 +72,7 @@ export default defineConfig({
       source: {
         type: "package",
         package: "@antelopejs/file-storage-local",
-        version: "^0.1.8",
+        version: "^0.2.0",
       },
       config: {
         storagePath: resolve(__dirname, ".antelope/file-storage"),
@@ -84,7 +84,7 @@ export default defineConfig({
       source: {
         type: "package",
         package: "@antelopejs/nodemailer",
-        version: "^0.0.5",
+        version: "^0.0.8",
       },
       config: {
         host: process.env.SMTP_HOST ?? "127.0.0.1",
