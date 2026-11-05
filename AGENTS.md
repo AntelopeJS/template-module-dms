@@ -4,7 +4,7 @@ A reusable AntelopeJS DMS module built from the `template-module-dms` template. 
 
 ## Layout
 
-- `src/` is the backend module: `index.ts` holds the lifecycle, `pages/` the DMS pages. Register modules before importing their pages in `construct()`, and register the frontend in `start()` after DMS connects.
+- `src/` is the backend module: `index.ts` holds the lifecycle, `pages/` the DMS pages, and `frontend-module.ts` the frontend registration that `dmsFrontend` in `package.json` names for `ajs dms`. Keep that file free of runtime imports beyond Node built-ins: `ajs dms` loads it without the backend. Register modules before importing their pages in `construct()`, and register the frontend in `start()` after DMS connects.
 - `frontend-vue/` is the Vue frontend, a pnpm workspace package with its own lockfile (`shared-workspace-lockfile=false`). ESLint, Prettier and Vitest own it, not oxlint and oxfmt. Keep `CustomComponent` names aligned with its `componentPrefix` and registration names, and its `engines` range on `@antelopejs/dms-frontend` including the root devDependency's version and capped below the next minor: the loader refuses the module outside it.
 - `playground/` is the development host, not part of the published package. Keep DMS providers and development credentials there. The frontend scripts run from `playground/` so the loader finds the backend's `.antelope` discovery files.
 
@@ -80,6 +80,7 @@ Verify a boundary against the imports a developer or agent would plausibly write
 | String-keyed object tables are read through own keys only                      | `antelopejs/no-inherited-key-lookup`                |
 | A type guard checks each member it narrows to; keys with `Object.hasOwn`       | `antelopejs/no-presence-only-type-guard`            |
 | A type guard checks the nested elements and values it claims                   | review; no tool                                     |
+| Every file type-aware lint reads is listed by a tsconfig                       | `antelopejs/require-tsconfig-include`               |
 | Params ≤ 5, function ≤ 120 lines, file ≤ 500 lines, depth ≤ 4, complexity ≤ 20 | `eslint/max-*`, `eslint/complexity`                 |
 | Cleanup preserves declarations, runtime exports and DMS auto-imports           | `antelopejs-api-diff <base-ref>`                    |
 | Comment-only changes preserve JavaScript emit                                  | `antelopejs-comment-proof <base-ref>`               |

@@ -26,7 +26,7 @@
     "frontend:build": "cd playground && ajs dms build",
     "frontend:verify": "ajs dms verify-source",
     "build": "rimraf dist && tsc",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc -p playground",
     "lint": "oxlint && pnpm --dir frontend-vue lint",
     "format": "oxfmt . && pnpm --dir frontend-vue format",
     "test": "pnpm --dir frontend-vue test",
@@ -52,7 +52,7 @@
     "@antelopejs/core": "1.20.0",
     "@antelopejs/dms": ">=0.16.0 <0.17.0",
     "@antelopejs/dms-frontend": "0.10.0",
-    "@antelopejs/tooling-configs": "^0.2.17",
+    "@antelopejs/tooling-configs": "^0.2.18",
     "@types/node": "^24.0.0",
     "dotenv": "^17.4.2",
     "knip": "^6.34.0",
@@ -74,5 +74,6 @@
   },
   "antelopeJs": {
     "baseUrl": "dist"
-  }
+  },
+  "dmsFrontend": "dist/frontend-module.js"
 }
