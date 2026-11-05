@@ -75,7 +75,6 @@ const config: VerifyConfig = {
     exposure: {
       globs: [".gitignore", ".npmrc", "frontend-vue/.gitignore", "frontend-vue/.npmrc", "playground/.env.example"],
       funnels: [],
-      containments: [],
       why: "every module created from the template inherits what git and npm leave out; a dropped .env line commits secrets (the playground reads its JWT secrets and database URL from playground/.env) in modules a revert never reaches",
     },
     publish: null,
