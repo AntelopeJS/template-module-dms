@@ -22,7 +22,7 @@ export default defineConfig({
       source: {
         type: "package",
         package: "@antelopejs/dms",
-        version: ">=0.16.1 <0.17.0",
+        version: ">=0.18.0 <0.19.0",
       },
       config: {
         apiBaseUrl: "${@api.API_PUBLIC_BASE_URL}",
@@ -42,7 +42,7 @@ export default defineConfig({
       source: {
         type: "package",
         package: "@antelopejs/mongodb",
-        version: "^1.4.2",
+        version: "^1.6.3",
       },
       config: {
         url: process.env.MONGODB_URL ?? "mongodb://127.0.0.1:27017",
@@ -53,7 +53,7 @@ export default defineConfig({
       source: {
         type: "package",
         package: "@antelopejs/auth-jwt",
-        version: "^1.0.3",
+        version: "^1.1.0",
       },
       config: { secret: process.env.AUTH_JWT_SECRET ?? "dev" },
     },
@@ -61,7 +61,7 @@ export default defineConfig({
       source: {
         type: "package",
         package: "@antelopejs/api",
-        version: "^1.3.4",
+        version: "^1.7.1",
       },
       config: {
         servers: [{ protocol: "http", port: 5010 }],
