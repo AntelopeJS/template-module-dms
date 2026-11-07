@@ -14,6 +14,7 @@ covers:
   - frontend-vue/**
   - playground/**
   - compose.yaml
+  - AGENTS.md
   - .npmrc
 docs:
   - CONTRIBUTING.md

@@ -20,6 +20,6 @@ pnpm exec antelopejs-verify journey "$RUN" smoke
 ## Gotchas
 
 - The smoke feature covers no glob, so it never marks a file as mapped.
-- `covers:` lists every file a feature's journeys read, install included: `pnpm install` reads `.npmrc`, the frontend's `package.json`, `pnpm-lock.yaml` and `.npmrc`, and runs `lefthook install` from `prepare`, which reads `lefthook.yml`. A broken copy of any of them fails every journey that installs, so every feature with such a journey covers them. `pnpm run checks` type-checks, lints and formats `src/`, `frontend-vue/` and `playground/`, so `tooling` covers them too.
+- `covers:` lists every file a feature's journeys read, install included: `pnpm install` reads `.npmrc` and the frontend's `package.json` and `pnpm-lock.yaml`, and runs `lefthook install` from `prepare`, which reads `lefthook.yml`. A broken copy of any of them fails every journey that installs, so every feature with such a journey covers them. `pnpm run checks` type-checks, lints and formats `src/`, `frontend-vue/` and `playground/`, and `sync:check` compares the managed block of `AGENTS.md`, so `tooling` covers them too.
 - The template creates modules, not projects: the journeys run `ajs module init` against the offline manifest. The shared `scaffold-dev` and `scaffold-checks` journeys run `ajs project init`, so no feature names them.
 - The playground needs MongoDB, Mailpit and the DMS providers downloaded at start, with the first administrator created in a browser, so no journey starts it; see the Attention section of the PR that added this layer.
