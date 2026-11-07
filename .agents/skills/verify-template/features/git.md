@@ -5,6 +5,10 @@ covers:
   - frontend-vue/.gitignore
   - frontend-vue/.npmrc
   - playground/.env.example
+  - src/**
+  - lefthook.yml
+  - frontend-vue/package.json
+  - frontend-vue/pnpm-lock.yaml
 docs:
   - README.md
 journeys:
