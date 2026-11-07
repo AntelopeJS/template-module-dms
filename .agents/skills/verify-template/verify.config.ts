@@ -169,17 +169,6 @@ const config: VerifyConfig = {
         context.expect(verify.folder, [exitIs(verify, 0)]);
       },
     },
-    "scaffold-lint": {
-      title: "the created module passes its typecheck, lint (oxlint, ESLint and Prettier) and knip",
-      entryPoint: "`pnpm run typecheck`, `pnpm run lint` and `pnpm run knip`",
-      async run(context) {
-        const module = await scaffolded(context);
-        for (const script of ["typecheck", "lint", "knip"]) {
-          const done = await context.command(`pnpm run ${script}`, "pnpm", ["run", script], { cwd: module });
-          context.expect(done.folder, [exitIs(done, 0)]);
-        }
-      },
-    },
     "scaffold-lint-rejects": {
       title: "typecheck rejects an implicitly typed parameter, and lint rejects a debugger statement, so the configs are live",
       entryPoint: "`pnpm run typecheck` and `pnpm run lint` after editing `src/`",
@@ -203,7 +192,7 @@ const config: VerifyConfig = {
         const commit = await context.command("first commit", "git", ["-c", "user.name=verify", "-c", "user.email=verify@example.com", "commit", "-m", "chore: initial commit"], { cwd: module });
         context.expect(commit.folder, [exitIs(commit, 0)], { critical: true });
         const checks = await context.command("pnpm run checks", "pnpm", ["run", "checks"], { cwd: module });
-        context.expect(checks.folder, [exitIs(checks, 0)]);
+        context.expect(checks.folder, [exitIs(checks, 0), has("every check step ran and none was skipped", checks.stdout + checks.stderr, /^Checks: \d+ passed, 0 failed\.$/m)]);
       },
     },
     "playground-dev": {
