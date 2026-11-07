@@ -18,6 +18,15 @@ covers:
   - compose.yaml
   - AGENTS.md
   - .npmrc
+  - README.md
+  - CONTRIBUTING.md
+  - CLAUDE.md
+  - LICENSE
+  - .gitignore
+  - .nvmrc
+  - frontend-vue/.gitignore
+  - frontend-vue/.npmrc
+  - playground/.env.example
 docs:
   - CONTRIBUTING.md
   - AGENTS.md
