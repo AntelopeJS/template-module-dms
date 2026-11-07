@@ -12,6 +12,8 @@ covers:
   - .claude/**
   - src/**
   - frontend-vue/**
+  - frontend-vue/.prettierrc
+  - frontend-vue/.prettierignore
   - playground/**
   - compose.yaml
   - AGENTS.md
