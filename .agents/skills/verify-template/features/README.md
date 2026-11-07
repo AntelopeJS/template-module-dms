@@ -6,7 +6,7 @@ One file per feature. `covers:` lists the source globs it owns, `docs:` the page
 |---|---|---|
 | [module](module.md) | Creates a DMS module and builds it. | scaffold-shape, module-build |
 | [frontend](frontend.md) | Tests and verifies the Vue frontend. | frontend-test, frontend-test-fails, frontend-verify |
-| [tooling](tooling.md) | Runs typecheck, lint, knip and `pnpm run checks`. | scaffold-lint, scaffold-lint-rejects, scaffold-checks |
+| [tooling](tooling.md) | Runs typecheck, lint, knip and `pnpm run checks`. | scaffold-lint-rejects, scaffold-checks |
 | [docs](docs.md) | Reads the README, CONTRIBUTING and the license. | scaffold-docs |
 | [git](git.md) | Commits in a module whose `.gitignore` the template wrote. | scaffold-gitignore |
 | [smoke](smoke.md) | The fixed journey every verdict runs: create, install, build. | module-build |
