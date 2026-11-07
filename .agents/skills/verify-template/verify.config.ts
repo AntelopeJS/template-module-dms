@@ -192,7 +192,7 @@ const config: VerifyConfig = {
         const commit = await context.command("first commit", "git", ["-c", "user.name=verify", "-c", "user.email=verify@example.com", "commit", "-m", "chore: initial commit"], { cwd: module });
         context.expect(commit.folder, [exitIs(commit, 0)], { critical: true });
         const checks = await context.command("pnpm run checks", "pnpm", ["run", "checks"], { cwd: module });
-        context.expect(checks.folder, [exitIs(checks, 0)]);
+        context.expect(checks.folder, [exitIs(checks, 0), has("every check step ran and none was skipped", checks.stdout + checks.stderr, /^Checks: \d+ passed, 0 failed\.$/m)]);
       },
     },
     "playground-dev": {
