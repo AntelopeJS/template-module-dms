@@ -39,12 +39,14 @@ function freePort(): Promise<number> {
 /** Prints, with the module's own Node, the manifest fields a journey compares. */
 const MANIFEST_FIELDS = "const m = require('./package.json'); console.log(JSON.stringify({ name: m.name, main: m.main, types: m.types }))";
 
+const MODULE = "my-module";
+
 /**
- * Creates a module from the template with `ajs module init`, as a user does, and installs it; returns its folder.
+ * Creates a module from the template with `ajs module init`, as a user does, in `parent`; returns its folder.
  * The harness scaffolds only projects, so the first step uses it for what it also does: pointing `ajs` at the offline manifest.
  */
-async function scaffolded(context: JourneyContext, install = true): Promise<string> {
-  const module = join(context.work, "my-module");
+async function created(context: JourneyContext, parent: string): Promise<string> {
+  const module = join(parent, MODULE);
   const offline = await context.scaffold("point ajs at the offline manifest", module, ["--help"]);
   context.expect(offline.folder, [exitIs(offline, 0)], { critical: true });
   const init = await context.command("ajs module init", "pnpm", ["exec", "ajs", "module", "init", module, "--template", TEMPLATE, "--pm", "pnpm", "--git-init"], {
@@ -52,18 +54,36 @@ async function scaffolded(context: JourneyContext, install = true): Promise<stri
   });
   context.expect(init.folder, [exitIs(init, 0), exists(join(module, "package.json")), exists(join(module, "src/index.ts"))], { critical: true });
   context.tree("scaffolded tree", module);
-  if (install) {
-    const done = await context.command("pnpm install", "pnpm", ["install", "--frozen-lockfile", "--prefer-offline"], { cwd: module });
-    context.expect(done.folder, [exitIs(done, 0)], { critical: true });
-  }
   return module;
 }
 
+async function install(context: JourneyContext, module: string): Promise<void> {
+  const done = await context.command("pnpm install", "pnpm", ["install", "--frozen-lockfile", "--prefer-offline"], { cwd: module });
+  context.expect(done.folder, [exitIs(done, 0)], { critical: true });
+}
+
+async function build(context: JourneyContext, module: string): Promise<void> {
+  const done = await context.command("pnpm run build", "pnpm", ["run", "build"], { cwd: module });
+  context.expect(done.folder, [exitIs(done, 0), exists(join(module, "dist/index.js")), exists(join(module, "dist/index.d.ts"))], { critical: true });
+}
+
+/** A created module, installed when `installed` is set; every journey of the run after the first gets a copy of the same installed module. */
+async function scaffolded(context: JourneyContext, installed = true): Promise<string> {
+  if (!installed) return created(context, context.work);
+  const folder = await context.prepared("installed-module", async (parent) => {
+    await install(context, await created(context, parent));
+  });
+  return join(folder, MODULE);
+}
+
+/** A created, installed and built module, prepared once per run like {@link scaffolded}. */
 async function built(context: JourneyContext): Promise<string> {
-  const module = await scaffolded(context);
-  const build = await context.command("pnpm run build", "pnpm", ["run", "build"], { cwd: module });
-  context.expect(build.folder, [exitIs(build, 0), exists(join(module, "dist/index.js")), exists(join(module, "dist/index.d.ts"))], { critical: true });
-  return module;
+  const folder = await context.prepared("built-module", async (parent) => {
+    const module = await created(context, parent);
+    await install(context, module);
+    await build(context, module);
+  });
+  return join(folder, MODULE);
 }
 
 const config: VerifyConfig = {
