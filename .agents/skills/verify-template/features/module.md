@@ -5,6 +5,17 @@ covers:
   - pnpm-lock.yaml
   - pnpm-workspace.yaml
   - .nvmrc
+  - frontend-vue/dms.frontend.ts
+  - frontend-vue/app/components/Welcome.vue
+  - frontend-vue/tests/welcome.test.ts
+  - playground/antelope.config.ts
+  - playground/.env.example
+  - compose.yaml
+  - .npmrc
+  - lefthook.yml
+  - frontend-vue/package.json
+  - frontend-vue/pnpm-lock.yaml
+  - frontend-vue/.npmrc
 docs:
   - README.md
 journeys:

@@ -1,6 +1,8 @@
 ---
 covers:
   - frontend-vue/**
+  - .npmrc
+  - lefthook.yml
 docs:
   - README.md
 journeys:

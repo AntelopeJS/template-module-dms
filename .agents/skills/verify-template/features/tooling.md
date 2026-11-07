@@ -10,6 +10,11 @@ covers:
   - .editorconfig
   - .github/**
   - .claude/**
+  - src/**
+  - frontend-vue/**
+  - playground/**
+  - compose.yaml
+  - .npmrc
 docs:
   - CONTRIBUTING.md
   - AGENTS.md

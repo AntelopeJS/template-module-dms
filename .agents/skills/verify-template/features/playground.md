@@ -2,6 +2,12 @@
 covers:
   - playground/**
   - compose.yaml
+  - src/**
+  - .npmrc
+  - lefthook.yml
+  - frontend-vue/package.json
+  - frontend-vue/pnpm-lock.yaml
+  - frontend-vue/.npmrc
 docs:
   - README.md
 journeys:
