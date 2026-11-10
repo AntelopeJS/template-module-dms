@@ -6,8 +6,8 @@ covers:
   - pnpm-workspace.yaml
   - .nvmrc
   - frontend-vue/dms.frontend.ts
-  - frontend-vue/app/components/Welcome.vue
-  - frontend-vue/tests/welcome.test.ts
+  - frontend-vue/app/components/WelcomeCard.vue
+  - frontend-vue/tests/welcome-card.test.ts
   - playground/antelope.config.ts
   - playground/.env.example
   - compose.yaml
