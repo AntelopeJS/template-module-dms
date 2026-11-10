@@ -28,7 +28,7 @@ defineProps<Props>()
 				<dd class="text-muted mt-2 text-sm leading-6">
 					Edit
 					<code class="text-toned break-all">
-						frontend-vue/app/components/Welcome.vue
+						frontend-vue/app/components/WelcomeCard.vue
 					</code>
 					to change the frontend. Both servers reload while you work.
 				</dd>

@@ -17,8 +17,8 @@ my-dms-module/
 │   └── pages/welcome.ts          # backend page and props for the Vue component
 ├── frontend-vue/                 # separate package, loaded by the DMS frontend
 │   ├── dms.frontend.ts           # registers ExampleWelcome
-│   ├── app/components/Welcome.vue
-│   └── tests/welcome.test.ts
+│   ├── app/components/WelcomeCard.vue
+│   └── tests/welcome-card.test.ts
 ├── playground/
 │   ├── antelope.config.ts        # local module + DMS and its providers
 │   └── .env.example              # optional local overrides

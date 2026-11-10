@@ -136,8 +136,8 @@ const config: VerifyConfig = {
           exists(join(module, "src/pages/welcome.ts")),
           exists(join(module, "frontend-vue/package.json")),
           exists(join(module, "frontend-vue/dms.frontend.ts")),
-          exists(join(module, "frontend-vue/app/components/Welcome.vue")),
-          exists(join(module, "frontend-vue/tests/welcome.test.ts")),
+          exists(join(module, "frontend-vue/app/components/WelcomeCard.vue")),
+          exists(join(module, "frontend-vue/tests/welcome-card.test.ts")),
           exists(join(module, "playground/antelope.config.ts")),
           exists(join(module, "playground/.env.example")),
           exists(join(module, "compose.yaml")),
@@ -266,7 +266,7 @@ const config: VerifyConfig = {
           const ignored = await context.command(`git check-ignore ${path}`, "git", ["check-ignore", "-q", path], { cwd: module });
           context.expect(ignored.folder, [equal(`${path} is ignored`, ignored.exitCode, 0)]);
         }
-        for (const path of ["src/index.ts", "package.json", "README.md", "frontend-vue/package.json", "frontend-vue/app/components/Welcome.vue", "playground/antelope.config.ts", "playground/.env.example", "compose.yaml"]) {
+        for (const path of ["src/index.ts", "package.json", "README.md", "frontend-vue/package.json", "frontend-vue/app/components/WelcomeCard.vue", "playground/antelope.config.ts", "playground/.env.example", "compose.yaml"]) {
           const kept = await context.command(`git check-ignore ${path}`, "git", ["check-ignore", "-q", path], { cwd: module });
           context.expect(kept.folder, [equal(`${path} is not ignored`, kept.exitCode, 1)]);
         }
