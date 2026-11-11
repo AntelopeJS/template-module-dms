@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "types": ["node"],
-    "incremental": false,
+    "tsBuildInfoFile": ".antelope/tsconfig.tsbuildinfo",
     "declaration": false,
     "noEmit": true
   },
