@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@antelopejs/dms-frontend': file:.tgz-deps/antelopejs-dms-frontend-75e4bf9.tgz
+  '@antelopejs/dms-frontend': file:.tgz-deps/antelopejs-dms-frontend-8e5ca35.tgz
 
 importers:
 
@@ -28,8 +28,8 @@ importers:
         specifier: '>=0.19.4 <0.20.0'
         version: 0.19.4(@antelopejs/core@1.21.3)
       '@antelopejs/dms-frontend':
-        specifier: file:.tgz-deps/antelopejs-dms-frontend-75e4bf9.tgz
-        version: file:.tgz-deps/antelopejs-dms-frontend-75e4bf9.tgz(@antelopejs/core@1.21.3)
+        specifier: file:.tgz-deps/antelopejs-dms-frontend-8e5ca35.tgz
+        version: file:.tgz-deps/antelopejs-dms-frontend-8e5ca35.tgz(@antelopejs/core@1.21.3)
       '@antelopejs/tooling-configs':
         specifier: ^0.5.8
         version: 0.5.8(knip@6.43.0)(oxfmt@0.66.0)(oxlint@1.81.0(oxlint-tsgolint@7.0.2004))(playwright-core@1.56.1)
@@ -71,8 +71,8 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
-  '@antelopejs/dms-frontend@file:.tgz-deps/antelopejs-dms-frontend-75e4bf9.tgz':
-    resolution: {integrity: sha512-QE+wg7oVWm9VlfX9S2ih2G0QcdOBfJm4e2OuYN1T6EYZEi3GLAr+XHcOr0ozTrWLE47uq90Gmg6wKuuzhUAdVw==, tarball: file:.tgz-deps/antelopejs-dms-frontend-75e4bf9.tgz}
+  '@antelopejs/dms-frontend@file:.tgz-deps/antelopejs-dms-frontend-8e5ca35.tgz':
+    resolution: {integrity: sha512-OudfKjsf9U7oleRtn15eLC5Op5KVfvqp5kF35V1AAkmM6C/lEB+Ai5D6hFDrHKGcttUqPoGdyuwBTWp5vQhfTA==, tarball: file:.tgz-deps/antelopejs-dms-frontend-8e5ca35.tgz}
     version: 0.10.6
     engines: {node: '>=20.19.0'}
     hasBin: true
@@ -1760,7 +1760,7 @@ snapshots:
       semver: 7.8.5
       typescript: 5.9.3
 
-  '@antelopejs/dms-frontend@file:.tgz-deps/antelopejs-dms-frontend-75e4bf9.tgz(@antelopejs/core@1.21.3)':
+  '@antelopejs/dms-frontend@file:.tgz-deps/antelopejs-dms-frontend-8e5ca35.tgz(@antelopejs/core@1.21.3)':
     dependencies:
       '@antelopejs/core': 1.21.3
       '@intlify/message-compiler': 11.4.17

@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@antelopejs/dms-frontend': file:.tgz-deps/antelopejs-dms-frontend-75e4bf9.tgz
+  '@antelopejs/dms-frontend': file:.tgz-deps/antelopejs-dms-frontend-8e5ca35.tgz
 
 importers:
 
