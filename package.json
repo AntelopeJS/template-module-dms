@@ -44,15 +44,15 @@
     "suppressions:update": "antelopejs-suppressions --update"
   },
   "dependencies": {
-    "@antelopejs/interface-api": ">=0.3.2 <1.0.0",
-    "@antelopejs/interface-core": ">=0.4.1 <1.0.0",
-    "@antelopejs/interface-dms": ">=0.13.2 <0.14.0"
+    "@antelopejs/interface-api": ">=0.3.2 <0.4.0",
+    "@antelopejs/interface-core": ">=0.5.1 <0.6.0",
+    "@antelopejs/interface-dms": ">=0.14.0 <0.15.0"
   },
   "devDependencies": {
-    "@antelopejs/core": "1.21.3",
-    "@antelopejs/dms": ">=0.19.4 <0.20.0",
-    "@antelopejs/dms-frontend": "file:.tgz-deps/antelopejs-dms-frontend-8e5ca35.tgz",
-    "@antelopejs/tooling-configs": "^0.5.8",
+    "@antelopejs/core": "~1.23.2",
+    "@antelopejs/dms": ">=0.20.0 <0.21.0",
+    "@antelopejs/dms-frontend": ">=0.11.1 <0.12.0",
+    "@antelopejs/tooling-configs": "^0.7.1",
     "@types/node": "^24.0.0",
     "dotenv": "^17.4.2",
     "knip": "^6.34.0",
@@ -70,10 +70,7 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "sharp"
-    ],
-    "overrides": {
-      "@antelopejs/dms-frontend": "file:.tgz-deps/antelopejs-dms-frontend-8e5ca35.tgz"
-    }
+    ]
   },
   "antelopeJs": {
     "baseUrl": "dist"
