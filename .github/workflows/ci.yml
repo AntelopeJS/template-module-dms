@@ -23,6 +23,7 @@ jobs:
         pnpm frontend:verify
       renovate-sync: false
       test-job: true
+      windows: true
     permissions:
       contents: read
   renovate-sync:
