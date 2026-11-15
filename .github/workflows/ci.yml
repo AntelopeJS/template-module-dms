@@ -1,11 +1,13 @@
 name: ci
 
 on:
-  push:
-    branches: [main]
   pull_request:
-
-  workflow_dispatch: null
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [next]
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
 permissions:
   contents: read
 
@@ -15,7 +17,7 @@ concurrency:
 
 jobs:
   ci:
-    uses: AntelopeJS/.github/.github/workflows/ci-node.yml@v1
+    uses: AntelopeJS/.github/.github/workflows/ci-node.yml@v2
     with:
       # `pnpm run checks` does not emit `dist/` or bundle the DMS frontend.
       extra-commands: |
@@ -23,7 +25,6 @@ jobs:
         pnpm frontend:verify
       renovate-sync: false
       test-job: true
-      windows: true
     permissions:
       contents: read
   renovate-sync:
@@ -32,4 +33,4 @@ jobs:
     permissions:
       contents: write
       actions: write
-    uses: AntelopeJS/.github/.github/workflows/ci-renovate-sync.yml@v1
+    uses: AntelopeJS/.github/.github/workflows/ci-renovate-sync.yml@v2

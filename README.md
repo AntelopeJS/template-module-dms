@@ -79,7 +79,7 @@ Mailpit captures emails locally, and its inbox listens on port 8025. If you do n
 | `pnpm lint` | Lints the backend with oxlint and the frontend with ESLint and Prettier |
 | `pnpm format:check` | Checks backend formatting |
 | `pnpm test` | Tests Vue rendering |
-| `pnpm run checks` | Runs typecheck, lint, format, knip, the tests, size, ratchet and sync checks |
+| `pnpm run checks` | Runs typecheck, lint, format, knip, the tests, size and sync checks |
 | `pnpm format` | Formats backend and frontend sources |
 | `pnpm pack` | Builds a tarball containing the module and its frontend sources |
 
