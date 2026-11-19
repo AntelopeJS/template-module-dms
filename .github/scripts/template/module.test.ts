@@ -37,10 +37,7 @@ const PROMISED_FILES = [
 ];
 
 /** Files of the template repository that `ajs module init` leaves out, so a created module never runs or ships them. */
-const TEMPLATE_ONLY_FILES = [
-  ".github/scripts/template/tsconfig.json",
-  ".agents/skills/verify-template/verify.config.ts",
-];
+const TEMPLATE_ONLY_FILES = [".github/scripts/template/tsconfig.json"];
 
 const PROMISED_SOURCES: [string, RegExp][] = [
   ["src/index.ts", /RegisterModule/],
@@ -86,7 +83,7 @@ await test("scaffold-shape", async () => {
       (file) => readModuleFile(module, file) !== undefined,
     ),
     [],
-    "the template's own tests and agent skills stay out of the created module",
+    "the template's own tests stay out of the created module",
   );
   for (const [file, pattern] of PROMISED_SOURCES)
     assert.match(

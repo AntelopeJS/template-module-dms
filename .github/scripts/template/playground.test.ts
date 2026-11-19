@@ -78,19 +78,23 @@ await test("playground-dev", async (t) => {
     signal: AbortSignal.timeout(5_000),
   });
   assert.ok(answer.status > 0, "the API answers on the chosen port");
-  const collections = await succeed("docker", [
-    "exec",
-    container,
-    "mongosh",
-    "--quiet",
-    "--eval",
-    "JSON.stringify(db.getSiblingDB('dms_module_playground').getCollectionNames())",
-  ]);
-  assert.match(
-    collections.stdout,
-    /tenant/,
-    "DMS created its tenant collection",
-  );
+  const deadline = Date.now() + 60_000;
+  let collections = "";
+  while (!/tenant/.test(collections) && Date.now() < deadline) {
+    collections = (
+      await succeed("docker", [
+        "exec",
+        container,
+        "mongosh",
+        "--quiet",
+        "--eval",
+        "JSON.stringify(db.getSiblingDB('dms_module_playground').getCollectionNames())",
+      ])
+    ).stdout;
+    if (!/tenant/.test(collections))
+      await new Promise((wait) => setTimeout(wait, 1_000));
+  }
+  assert.match(collections, /tenant/, "DMS created its tenant collection");
 
   const stopped = await app.interrupt();
   assert.ok(
