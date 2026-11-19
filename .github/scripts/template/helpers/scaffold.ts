@@ -112,10 +112,17 @@ function offlineManifest(): string {
 
 let environment: NodeJS.ProcessEnv | undefined;
 
-/** The environment of every command: its own `HOME`, and `ajs` pointed at the offline manifest. */
+/** The variables of the CI job running this suite, which a user's shell never has: `antelopejs-checks` reads them as the template's own pull request. */
+const CI_JOB_VARIABLE = /^(GITHUB|RUNNER|ANTELOPEJS)_/;
+
+/** The environment of every command: a user's shell with its own `HOME`, and `ajs` pointed at the offline manifest. */
 function env(): NodeJS.ProcessEnv {
   environment ??= {
-    ...process.env,
+    ...Object.fromEntries(
+      Object.entries(process.env).filter(
+        ([name]) => !CI_JOB_VARIABLE.test(name),
+      ),
+    ),
     HOME: scratch("home"),
     CI: "1",
     AJS_NO_UPDATE_CHECK: "1",
