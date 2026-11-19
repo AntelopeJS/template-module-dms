@@ -44,21 +44,21 @@
   "dependencies": {
     "@antelopejs/interface-api": ">=0.3.2 <0.4.0",
     "@antelopejs/interface-core": ">=0.5.1 <0.6.0",
-    "@antelopejs/interface-dms": ">=0.14.0 <0.15.0"
+    "@antelopejs/interface-dms": ">=0.14.6 <0.15.0"
   },
   "devDependencies": {
-    "@antelopejs/core": "~1.24.0",
-    "@antelopejs/dms": ">=0.20.2 <0.21.0",
-    "@antelopejs/dms-frontend": ">=0.11.4 <0.12.0",
-    "@antelopejs/tooling-configs": ">=0.8.0 <0.9.0",
+    "@antelopejs/core": "~1.24.5",
+    "@antelopejs/dms": ">=0.21.3 <0.22.0",
+    "@antelopejs/dms-frontend": ">=0.11.8 <0.12.0",
+    "@antelopejs/tooling-configs": ">=0.8.4 <0.9.0",
     "@types/node": "^24.0.0",
     "dotenv": "^17.4.2",
-    "knip": "^6.34.0",
+    "knip": "^6.46.1",
     "lefthook": "^2.2.2",
     "oxfmt": "^0.66.0",
     "oxlint": "1.81.0",
-    "oxlint-tsgolint": "^7.0.2001",
-    "rimraf": "^6.0.1",
+    "oxlint-tsgolint": "^7.0.2007",
+    "rimraf": "^6.1.4",
     "typescript": "^6.0.3"
   },
   "engines": {
