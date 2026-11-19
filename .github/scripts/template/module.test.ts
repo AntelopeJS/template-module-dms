@@ -36,6 +36,12 @@ const PROMISED_FILES = [
   ".nvmrc",
 ];
 
+/** Files of the template repository that `ajs module init` leaves out, so a created module never runs or ships them. */
+const TEMPLATE_ONLY_FILES = [
+  ".github/scripts/template/tsconfig.json",
+  ".agents/skills/verify-template/verify.config.ts",
+];
+
 const PROMISED_SOURCES: [string, RegExp][] = [
   ["src/index.ts", /RegisterModule/],
   ["src/index.ts", /export async function construct/],
@@ -74,6 +80,13 @@ await test("scaffold-shape", async () => {
     PROMISED_FILES.filter((file) => readModuleFile(module, file) === undefined),
     [],
     "every file the README promises exists",
+  );
+  assert.deepEqual(
+    TEMPLATE_ONLY_FILES.filter(
+      (file) => readModuleFile(module, file) !== undefined,
+    ),
+    [],
+    "the template's own tests and agent skills stay out of the created module",
   );
   for (const [file, pattern] of PROMISED_SOURCES)
     assert.match(

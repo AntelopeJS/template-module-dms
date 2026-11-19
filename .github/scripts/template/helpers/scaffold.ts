@@ -140,7 +140,13 @@ export interface Result {
   stderr: string;
 }
 
-/** Runs `program` to completion and never rejects on a non-zero exit, so a test can assert a failure. */
+/** How long a command may run before it is killed, long enough for `pnpm frontend:verify` on a CI runner. */
+const COMMAND_TIMEOUT_MS = 900_000;
+
+/** How long `ajs project dev` may take to exit after SIGINT before its process group is killed. */
+const INTERRUPT_TIMEOUT_MS = 30_000;
+
+/** Runs `program` to completion and never rejects on a non-zero exit, so a test can assert a failure; SIGKILL ends it after {@link COMMAND_TIMEOUT_MS}. */
 export function run(
   program: string,
   args: string[],
@@ -151,6 +157,8 @@ export function run(
       cwd,
       env: env(),
       stdio: ["ignore", "pipe", "pipe"],
+      timeout: COMMAND_TIMEOUT_MS,
+      killSignal: "SIGKILL",
     });
     let stdout = "";
     let stderr = "";
@@ -206,12 +214,29 @@ export function start(
   let exited = false;
   child.stdout.on("data", (chunk: Buffer) => (stdout += chunk.toString()));
   child.stderr.on("data", (chunk: Buffer) => (stderr += chunk.toString()));
-  const ended = new Promise<Result>((done) =>
+  const ended = new Promise<Result>((done) => {
+    child.once("error", (error) => {
+      exited = true;
+      done({
+        code: null,
+        signal: null,
+        stdout,
+        stderr: `${stderr}${error.message}\n`,
+      });
+    });
     child.once("close", (code, signal) => {
       exited = true;
       done({ code, signal, stdout, stderr });
-    }),
-  );
+    });
+  });
+  const kill = (): void => {
+    if (child.pid === undefined) return;
+    try {
+      process.kill(-child.pid, "SIGKILL");
+    } catch {
+      return;
+    }
+  };
   return {
     output: () => stdout + stderr,
     async waitFor(pattern, timeoutMs) {
@@ -230,16 +255,12 @@ export function start(
     },
     async interrupt() {
       child.kill("SIGINT");
-      return ended;
+      const fallback = setTimeout(kill, INTERRUPT_TIMEOUT_MS);
+      const result = await ended;
+      clearTimeout(fallback);
+      return result;
     },
-    kill() {
-      if (child.pid === undefined) return;
-      try {
-        process.kill(-child.pid, "SIGKILL");
-      } catch {
-        return;
-      }
-    },
+    kill,
   };
 }
 

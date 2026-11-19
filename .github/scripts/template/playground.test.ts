@@ -74,7 +74,9 @@ await test("playground-dev", async (t) => {
     600_000,
   );
 
-  const answer = await fetch(`http://127.0.0.1:${port}/`);
+  const answer = await fetch(`http://127.0.0.1:${port}/`, {
+    signal: AbortSignal.timeout(5_000),
+  });
   assert.ok(answer.status > 0, "the API answers on the chosen port");
   const collections = await succeed("docker", [
     "exec",
