@@ -37,9 +37,7 @@ const PROMISED_FILES = [
 ];
 
 /** Files of the template repository that `ajs module init` leaves out, so a created module never runs or ships them. */
-const TEMPLATE_ONLY_FILES = [
-  ".github/scripts/template/tsconfig.json",
-];
+const TEMPLATE_ONLY_FILES = [".github/scripts/template/tsconfig.json"];
 
 const PROMISED_SOURCES: [string, RegExp][] = [
   ["src/index.ts", /RegisterModule/],
