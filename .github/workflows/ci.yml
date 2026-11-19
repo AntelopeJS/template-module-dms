@@ -25,6 +25,7 @@ jobs:
       extra-commands: |
         pnpm build
         pnpm frontend:verify
+        if [ -d .github/scripts/template ] && [ "$ANTELOPEJS_CI_TIER" != fast ]; then pnpm exec tsc -p .github/scripts/template && node --test --test-concurrency=4 ".github/scripts/template/*.test.ts"; fi
       renovate-sync: false
       test-job: true
       affected-tests: true
