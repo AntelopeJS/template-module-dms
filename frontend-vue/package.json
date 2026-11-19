@@ -6,7 +6,7 @@
 	"main": "./dms.frontend.ts",
 	"packageManager": "pnpm@10.2.0",
 	"engines": {
-		"@antelopejs/dms-frontend": ">=0.11.4 <0.12.0"
+		"@antelopejs/dms-frontend": ">=0.11.8 <0.12.0"
 	},
 	"scripts": {
 		"dev": "pnpm --dir .. frontend:dev",
@@ -16,17 +16,17 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"vue": "^3.5.18"
+		"vue": "^3.5.45"
 	},
 	"devDependencies": {
-		"@vitejs/plugin-vue": "^6.0.0",
-		"eslint": "^9.0.0",
-		"eslint-plugin-vue": "^10.0.0",
-		"jsdom": "^26",
-		"prettier": "^3.5.3",
-		"prettier-plugin-tailwindcss": "^0.6.11",
+		"@vitejs/plugin-vue": "^6.0.11",
+		"eslint": "^9.39.5",
+		"eslint-plugin-vue": "^10.12.1",
+		"jsdom": "^26.1.0",
+		"prettier": "^3.10.1",
+		"prettier-plugin-tailwindcss": "^0.6.14",
 		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.0.0",
-		"vitest": "^3.2.4"
+		"typescript-eslint": "^8.73.0",
+		"vitest": "^3.2.7"
 	}
 }
