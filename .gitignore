@@ -12,3 +12,5 @@ dist/
 .amp/
 .claude/skills/
 .agents/skills/
+playground/.mcp.json
+playground/.codex/
