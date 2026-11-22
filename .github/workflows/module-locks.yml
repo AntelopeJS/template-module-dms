@@ -1,0 +1,28 @@
+name: module locks
+
+on:
+  schedule:
+    - cron: "47 4 * * *"
+  pull_request:
+    paths:
+      - .github/workflows/module-locks.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  refresh:
+    permissions:
+      contents: read
+    uses: AntelopeJS/.github/.github/workflows/module-locks-refresh.yml@v2
+    with:
+      projects: |
+        playground
+    secrets:
+      RELEASE_APP_ID: ${{ secrets.RELEASE_APP_ID }}
+      RELEASE_APP_PRIVATE_KEY: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
