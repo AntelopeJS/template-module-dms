@@ -22,7 +22,7 @@ export default defineConfig({
       source: {
         type: "package",
         package: "@antelopejs/dms",
-        version: "0.22.0",
+        version: "0.23.0",
       },
       config: {
         apiBaseUrl: "${@api.API_PUBLIC_BASE_URL}",
@@ -84,7 +84,7 @@ export default defineConfig({
       source: {
         type: "package",
         package: "@antelopejs/nodemailer",
-        version: "0.0.13",
+        version: "0.0.14",
       },
       config: {
         host: process.env.SMTP_HOST ?? "127.0.0.1",

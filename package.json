@@ -44,13 +44,13 @@
   "dependencies": {
     "@antelopejs/interface-api": ">=0.3.4 <0.4.0",
     "@antelopejs/interface-core": ">=0.5.2 <0.6.0",
-    "@antelopejs/interface-dms": ">=0.15.0 <0.16.0"
+    "@antelopejs/interface-dms": ">=0.16.0 <0.17.0"
   },
   "devDependencies": {
-    "@antelopejs/core": ">=1.24.6 <1.25.0",
-    "@antelopejs/dms": ">=0.22.0 <0.23.0",
+    "@antelopejs/core": ">=1.24.7 <1.25.0",
+    "@antelopejs/dms": ">=0.23.0 <0.24.0",
     "@antelopejs/dms-frontend": ">=0.11.9 <0.12.0",
-    "@antelopejs/tooling-configs": ">=0.9.3 <0.10.0",
+    "@antelopejs/tooling-configs": ">=0.10.0 <0.11.0",
     "@types/node": "^24.0.0",
     "dotenv": "^17.4.2",
     "knip": "^6.46.1",
