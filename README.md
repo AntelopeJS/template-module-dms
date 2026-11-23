@@ -43,7 +43,7 @@ cd my-dms-module
 
 The command installs both backend and frontend packages through the pnpm workspace. Each package keeps its existing lockfile to preserve its dependency resolution.
 
-No setup script or `.env` is required for development. The playground uses development JWT secrets, and the frontend loader generates an ephemeral session secret. Restarting the frontend can invalidate sessions. Do not deploy the playground with its default secrets. `build` and `start` require an explicit `DMS_SESSION_SECRET` of at least 32 characters.
+No setup script or `.env` is required for development. The playground uses development JWT secrets, and the frontend loader generates an ephemeral session secret. Restarting the frontend can invalidate sessions. Do not deploy the playground with its default secrets. The production server, `ajs dms start`, requires an explicit `DMS_SESSION_SECRET` of at least 32 characters.
 
 ## Run it
 
@@ -72,7 +72,7 @@ Mailpit captures emails locally, and its inbox listens on port 8025. If you do n
 | `pnpm services:down` | Stops the containers without deleting the database volume |
 | `pnpm dev` | Builds the local module and runs the backend in watch mode |
 | `pnpm frontend:dev` | Starts the Vue dashboard with hot reload |
-| `pnpm frontend:build -b <backend-url>` | Builds a dashboard from the running backend, which needs an explicit URL, unlike dev |
+| `pnpm frontend:build` | Builds the production dashboard into `playground/.dms-frontend/` from the playground's configuration, without a backend |
 | `pnpm frontend:verify` | Builds and type-checks the frontend against the installed DMS, without starting a backend |
 | `pnpm build` | Compiles the reusable backend module to `dist/` |
 | `pnpm typecheck` | Checks backend TypeScript types |
