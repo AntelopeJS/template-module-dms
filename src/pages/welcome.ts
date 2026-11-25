@@ -8,7 +8,7 @@ export class WelcomePage extends PageController("welcome", {
   urlSlug: "welcome",
   icon: "i-ph-hand-waving",
 }) {
-  static welcome = CustomComponent("example-welcome").options({
+  static welcome = CustomComponent("dms-example-welcome").options({
     title: "Your DMS module is running",
     message:
       "This page comes from your backend. The card comes from your Vue frontend.",
