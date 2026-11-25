@@ -12,7 +12,7 @@
 		"dev": "pnpm --dir .. frontend:dev",
 		"build": "pnpm --dir .. frontend:build",
 		"format": "prettier --write .",
-		"lint": "eslint . && prettier --check .",
+		"lint": "eslint . && prettier --check . && node --input-type=module -e \"import { assertDmsComponents } from '@antelopejs/dms/checks/dms-components'; await assertDmsComponents({ layer: '.', sources: ['../src'] });\"",
 		"test": "vitest run"
 	},
 	"dependencies": {
