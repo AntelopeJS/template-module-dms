@@ -15,8 +15,8 @@ importers:
         specifier: '>=0.5.2 <0.6.0'
         version: 0.5.2
       '@antelopejs/interface-dms':
-        specifier: '>=0.17.0 <0.18.0'
-        version: 0.17.0(cbdc019e050e70f2f9d1e8b606c4e911)
+        specifier: '>=0.17.2 <0.18.0'
+        version: 0.17.2(cbdc019e050e70f2f9d1e8b606c4e911)
     devDependencies:
       '@antelopejs/core':
         specifier: '>=1.24.7 <1.25.0'
@@ -140,10 +140,10 @@ packages:
     peerDependencies:
       '@antelopejs/interface-core': '>=0.5.2 <0.6.0'
 
-  '@antelopejs/interface-dms@0.17.0':
-    resolution: {integrity: sha512-cv+OKwJk7W2HFME80ln245Ji1XjcKTY/LpAHI37W790nUk07rPwu1qMei3yVMT1Kt4XjdD8xlfOgjWA6J24K/g==}
+  '@antelopejs/interface-dms@0.17.2':
+    resolution: {integrity: sha512-zBLTh9QpB38dz/Ys62Rn6uXB9k17oXG0a3fEEpQQQ4ic9YjLNuvJpctr38WmyD8U5+5dlWbvlFpdEluru35WLQ==}
     peerDependencies:
-      '@antelopejs/interface-api': '>=0.3.4 <0.4.0'
+      '@antelopejs/interface-api': '>=0.3.5 <0.4.0'
       '@antelopejs/interface-api-util': '>=0.3.3 <0.4.0'
       '@antelopejs/interface-core': '>=0.5.2 <0.6.0'
       '@antelopejs/interface-data-api': '>=0.8.2 <0.9.0'
@@ -1337,6 +1337,7 @@ packages:
 
   glob@10.5.0:
     resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   glob@13.0.6:
@@ -1349,6 +1350,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
@@ -1374,6 +1376,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -2122,7 +2125,7 @@ snapshots:
       '@antelopejs/interface-data-api': 0.8.2(@antelopejs/interface-api-util@0.3.3(@antelopejs/interface-api@0.3.5(@antelopejs/interface-core@0.5.2))(@antelopejs/interface-core@0.5.2))(@antelopejs/interface-api@0.3.5(@antelopejs/interface-core@0.5.2))(@antelopejs/interface-core@0.5.2)(@antelopejs/interface-database-decorators@0.5.4(@antelopejs/interface-api@0.3.5(@antelopejs/interface-core@0.5.2))(@antelopejs/interface-core@0.5.2)(@antelopejs/interface-database@0.4.3(@antelopejs/interface-core@0.5.2)))(@antelopejs/interface-database@0.4.3(@antelopejs/interface-core@0.5.2))
       '@antelopejs/interface-database': 0.4.3(@antelopejs/interface-core@0.5.2)
       '@antelopejs/interface-database-decorators': 0.5.4(@antelopejs/interface-api@0.3.5(@antelopejs/interface-core@0.5.2))(@antelopejs/interface-core@0.5.2)(@antelopejs/interface-database@0.4.3(@antelopejs/interface-core@0.5.2))
-      '@antelopejs/interface-dms': 0.17.0(cbdc019e050e70f2f9d1e8b606c4e911)
+      '@antelopejs/interface-dms': 0.17.2(cbdc019e050e70f2f9d1e8b606c4e911)
       '@antelopejs/interface-dms-builder': 0.6.3(@antelopejs/interface-core@0.5.2)
       '@antelopejs/interface-email': 0.2.1(@antelopejs/interface-core@0.5.2)
       '@antelopejs/interface-file-storage': 0.1.9(@antelopejs/interface-core@0.5.2)
@@ -2208,7 +2211,7 @@ snapshots:
     dependencies:
       '@antelopejs/interface-core': 0.5.2
 
-  '@antelopejs/interface-dms@0.17.0(cbdc019e050e70f2f9d1e8b606c4e911)':
+  '@antelopejs/interface-dms@0.17.2(cbdc019e050e70f2f9d1e8b606c4e911)':
     dependencies:
       '@antelopejs/interface-api': 0.3.5(@antelopejs/interface-core@0.5.2)
       '@antelopejs/interface-api-util': 0.3.3(@antelopejs/interface-api@0.3.5(@antelopejs/interface-core@0.5.2))(@antelopejs/interface-core@0.5.2)
