@@ -50,7 +50,7 @@
     "@antelopejs/core": ">=1.24.9 <1.25.0",
     "@antelopejs/dms": ">=0.24.3 <0.25.0",
     "@antelopejs/dms-frontend": ">=0.11.12 <0.12.0",
-    "@antelopejs/tooling-configs": ">=0.10.8 <0.11.0",
+    "@antelopejs/tooling-configs": ">=0.10.9 <0.11.0",
     "@types/node": "^24.0.0",
     "dotenv": "^17.4.2",
     "knip": "^6.46.1",
