@@ -31,7 +31,7 @@ If these skills are missing, install the [AntelopeJS agent skills plugin](https:
 
 ## Guardrails
 
-CI runs `pnpm run checks` in full on every pull request and reports what failed. The commit hook formats and lints the staged files. Locally, check only what you touched, one test file and not the suite, as the [`verify-template-module-dms`](.agents/skills/verify-template-module-dms/SKILL.md) skill says.
+Lint with `oxlint` and format with `oxfmt`; both read the configs at the repository root. Fix every finding: no rule warns.
 
 ### Comments
 
@@ -48,9 +48,5 @@ No tool checks these:
 - A type guard checks the nested elements and values it claims.
 - A no-upward import rule rejects same-tier peers; probe it with an import.
 - A finding only an evasion or a patched internal can trigger goes under Attention and never blocks.
-
-### Suppressions
-
-`guardrails.suppressions.json` caps lint directives, `@ts-expect-error`, `SAFETY:` comments and rules a lint config turns off. Over a cap, fix the code or remove another suppression of that kind; only the operator raises a number. After removing suppressions, run `pnpm run suppressions:update` and commit the file.
 
 <!-- antelopejs-guardrails:end -->
