@@ -39,6 +39,8 @@ jobs:
       affected-tests: true
       module-locks: true
       nightly: ${{ inputs.nightly == true }}
+      docs-files: |
+        README.md
     permissions:
       contents: read
   module-locks:
@@ -62,7 +64,7 @@ jobs:
   verdict:
     needs: [ci, module-locks, renovate-sync]
     if: ${{ !cancelled() }}
-    runs-on: ${{ vars.RUNNER_CI || 'ubuntu-latest' }}
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     timeout-minutes: 5
     permissions: {}
     steps:
