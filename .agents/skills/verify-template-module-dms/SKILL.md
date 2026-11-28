@@ -21,7 +21,7 @@ Once per checkout: `.agents/setup`. It switches to the Node major of `.nvmrc` (2
 | A `.vue` or `.ts` file in `frontend-vue/` | `pnpm --dir frontend-vue exec eslint <files>` and `pnpm --dir frontend-vue exec prettier --check <files>`, with the paths relative to `frontend-vue/`. |
 | Frontend behaviour | `pnpm --dir frontend-vue exec vitest run tests/<file>.test.ts --maxWorkers=4`. |
 | A frontend dependency, `dms.frontend.ts` or the `engines` range | `pnpm frontend:verify`. It builds and type-checks the frontend against the installed DMS in about 30 s, with no backend. |
-| A template test in `.github/scripts/template/` | `pnpm exec tsc -p .github/scripts/template`, then `node --test --test-concurrency=4 .github/scripts/template/<file>.test.ts`. Each file runs `ajs module init` and installs the new module from the registry, so it needs the network and takes minutes. |
+| A template test in `.github/scripts/template/` | `pnpm exec tsc -p .github/scripts/template`, then `node --test --test-concurrency=4 .github/scripts/template/<file>.test.ts`. Each file runs `ajs module init` and installs the new module from the registry, so it needs the network and takes about 20 s. |
 | `README.md`, `AGENTS.md` or another Markdown file | `pnpm exec oxfmt --check <files>`. A command the README names must be a `package.json` script: `docs.test.ts` checks it. |
 | A lint directive, `@ts-expect-error` or `SAFETY:` comment | `pnpm run suppressions`. After you remove one, run `pnpm run suppressions:update` and commit `guardrails.suppressions.json`. |
 | A file `antelopejs-sync` writes (`ci.yml`, `lefthook.yml`, the Guardrails block of `AGENTS.md`, the synced skills) | Nothing by hand. Bump `@antelopejs/tooling-configs`, run `pnpm run sync`, then `pnpm run sync:check`. |
