@@ -3,3 +3,5 @@ packages:
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - "@antelopejs/*"
+allowBuilds:
+  lefthook: false

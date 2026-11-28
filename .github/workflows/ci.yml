@@ -39,6 +39,8 @@ jobs:
       affected-tests: true
       module-locks: true
       nightly: ${{ inputs.nightly == true }}
+      docs-files: |
+        README.md
     permissions:
       contents: read
   module-locks:
