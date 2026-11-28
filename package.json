@@ -51,7 +51,7 @@
     "@antelopejs/dms": ">=0.24.3 <0.25.0",
     "@antelopejs/dms-frontend": ">=0.11.12 <0.12.0",
     "@antelopejs/tooling-configs": ">=0.10.12 <0.11.0",
-    "@types/node": "^24.0.0",
+    "@types/node": "^24.19.2",
     "dotenv": "^17.4.2",
     "knip": "^6.46.1",
     "lefthook": "^2.2.2",
