@@ -12,7 +12,7 @@ Module pages require platform-owner access.
 
 ## Checks
 
-Finish every change with `pnpm run checks`: typecheck, lint (oxlint and the frontend's ESLint and Prettier), format, knip, `pnpm test` (the frontend's Vitest suite), size and sync, printing only what failed. The pre-commit hook rejects new findings on the lines you add. `prepare` installs the hooks only inside a git work tree: in a new project, run `pnpm install` again after `git init`.
+Finish every change with `pnpm run checks`: typecheck, lint (oxlint and the frontend's ESLint and Prettier), format, knip, `pnpm test` (the frontend's Vitest suite), size and sync, printing only what failed.
 
 `pnpm run checks` does not cover these; CI runs the first two after it:
 

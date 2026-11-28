@@ -24,7 +24,6 @@ my-dms-module/
 │   └── .env.example              # optional local overrides
 ├── compose.yaml                 # local MongoDB and Mailpit
 ├── oxlint.config.ts             # lint, oxfmt.config.ts formatting, knip.config.ts dead code
-├── lefthook.yml                 # pre-commit and pre-push hooks
 └── package.json                 # backend, frontend, build and check commands
 ```
 
